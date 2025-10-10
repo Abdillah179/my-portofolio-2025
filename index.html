@@ -7,7 +7,7 @@
     <link rel="icon" href="img/foto 3.jpeg" type="image/x-icon">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-   <style>
+  <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 :root {
@@ -552,6 +552,7 @@ section {
     gap: 1rem;
     opacity: 0;
     transition: opacity 0.3s;
+    z-index: 5;
 }
 
 .project-card:hover .project-overlay {
@@ -1035,10 +1036,11 @@ footer {
         height: 200px;
     }
     
+    /* PERBAIKAN: Carousel button selalu visible di mobile dan tampilkan overlay saat tap */
     .carousel-btn {
-        width: 35px;
-        height: 35px;
-        opacity: 1;
+        width: 40px;
+        height: 40px;
+        opacity: 1 !important;
     }
     
     .carousel-btn.prev {
@@ -1053,7 +1055,26 @@ footer {
         font-size: 1rem;
     }
     
+    /* PERBAIKAN: Project overlay visible di mobile saat tap */
+    .project-overlay {
+        opacity: 0;
+        pointer-events: none;
+    }
+    
+    .project-card:active .project-overlay,
+    .project-carousel:active .project-overlay {
+        opacity: 1 !important;
+        pointer-events: auto;
+    }
+    
+    .project-btn {
+        width: 55px;
+        height: 55px;
+        pointer-events: auto;
+    }
+    
     .project-content {
+        padding: 1;
         padding: 1.5rem;
     }
     
@@ -1213,6 +1234,16 @@ footer {
     .carousel-btn {
         width: 40px;
         height: 40px;
+        opacity: 1 !important;
+    }
+    
+    .project-overlay {
+        opacity: 0;
+    }
+    
+    .project-card:active .project-overlay,
+    .project-carousel:active .project-overlay {
+        opacity: 1 !important;
     }
     
     /* Social Links */
@@ -1289,6 +1320,10 @@ footer {
     .project-carousel,
     .project-img {
         height: 250px;
+    }
+    
+    .carousel-btn {
+        opacity: 1 !important;
     }
     
     .project-content {
@@ -1396,7 +1431,7 @@ footer {
     }
     
     .carousel-btn {
-        opacity: 1;
+        opacity: 1 !important;
         width: 50px;
         height: 50px;
     }
@@ -1411,20 +1446,21 @@ footer {
         height: 65px;
     }
     
-    /* Remove hover effects on touch devices */
-    .skill-card:hover::before,
-    .project-card:hover .project-overlay,
-    .btn-primary-custom:hover::before {
-        display: none;
+    /* PERBAIKAN: Tampilkan overlay saat tap/touch */
+    .project-overlay {
+        opacity: 0;
+        transition: opacity 0.2s;
     }
     
-    /* Show overlays by default on touch */
-    .carousel-btn {
-        opacity: 0.8;
+    .project-card:active .project-overlay,
+    .project-img:active .project-overlay,
+    .project-carousel:active .project-overlay {
+        opacity: 1 !important;
     }
     
-    .project-card:active .project-overlay {
-        opacity: 1;
+    /* Alternative: Show overlay on long press */
+    .project-card {
+        -webkit-tap-highlight-color: transparent;
     }
 }
 
@@ -1499,20 +1535,8 @@ footer {
     }
 }
 
-/* Dark Mode Preference */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --bg-primary: #0f0f0f;
-        --bg-secondary: #1a1a1a;
-        --bg-card: #1f1f1f;
-        --text-primary: #ffffff;
-        --text-secondary: #a0a0a0;
-        --border-color: #2a2a2a;
-        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-        --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
-        --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
-    }
-}
+/* PERBAIKAN: Hapus dark mode default preference - biarkan light mode sebagai default */
+/* @media (prefers-color-scheme: dark) - DIHAPUS */
 
 /* Tablet Landscape Specific */
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
@@ -1748,8 +1772,38 @@ html {
         padding-right: max(15px, env(safe-area-inset-right));
     }
 }
-        
-   </style>
+
+/* PERBAIKAN TAMBAHAN: Overlay button visibility untuk mobile */
+@media (max-width: 991.98px) {
+    /* Tampilkan button overlay dengan tap hold */
+    .project-overlay {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    /* Tap untuk menampilkan overlay */
+    .project-img.show-overlay .project-overlay,
+    .project-carousel.show-overlay .project-overlay {
+        opacity: 1 !important;
+    }
+    
+    /* Alternatif: gunakan click/touch event */
+    .project-card.overlay-active .project-overlay {
+        opacity: 1 !important;
+    }
+}
+
+/* PERBAIKAN: Pastikan overlay berfungsi di semua device */
+.project-overlay a {
+    text-decoration: none;
+    z-index: 10;
+}
+
+.project-overlay .project-btn {
+    pointer-events: auto;
+    z-index: 11;
+}
+  </style>
 </head>
 <body>
     <!-- Gradient Background -->
