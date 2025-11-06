@@ -1803,6 +1803,81 @@ html {
     pointer-events: auto;
     z-index: 11;
 }
+
+/* Platform Cards */
+.platform-card {
+    background: var(--bg-card);
+    border-radius: 20px;
+    padding: 2.5rem;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.platform-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+    transition: left 0.5s;
+}
+
+.platform-card:hover::before {
+    left: 0;
+}
+
+.platform-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent-primary);
+}
+
+.platform-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1rem;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: white;
+    transition: all 0.3s;
+}
+
+.platform-card:hover .platform-icon {
+    transform: rotateY(360deg);
+}
+
+.platform-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.6rem 1.5rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    color: var(--accent-primary);
+    transition: all 0.3s;
+}
+
+.platform-card:hover .platform-badge {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    color: white;
+    border-color: transparent;
+    transform: translateX(5px);
+}
   </style>
 </head>
 <body>
@@ -1829,6 +1904,7 @@ html {
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#freelance-platforms">Hire Me On</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                     <li class="nav-item">
                         <div class="theme-toggle" id="themeToggle">
@@ -1859,6 +1935,12 @@ html {
                         <a href="https://github.com/Abdillah179" style="text-decoration: none;"><div class="social-link"><i class="fab fa-github"></i></div></a>
                         <a href="https://www.linkedin.com/in/muhammad-abdillah-asyhar-a74829216?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" style="text-decoration: none;"><div class="social-link"><i class="fab fa-linkedin"></i></div></a>
                         <a href="https://www.instagram.com/m_abdillah_234/" style="text-decoration: none;"><div class="social-link"><i class="fab fa-instagram"></i></div></a>
+                        <a href="https://www.sribu.com/id/users/Abdillah123/jasa-pembuatan-website-professional-b0c22460-4908-49d7-b864-4dbdce60fa56" style="text-decoration: none;" title="Sribulancer Profile">
+                            <div class="social-link"><i class="fas fa-briefcase"></i></div>
+                        </a>
+                        <a href="https://fastwork.id/user/muhammadabdillah/web-development-88832879" style="text-decoration: none;" title="Fastwork Profile">
+                            <div class="social-link"><i class="fas fa-user-tie"></i></div>
+                        </a>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -2342,6 +2424,58 @@ html {
             </div>
         </div>
     </section>
+
+    <!-- Tambahkan setelah Skills Section atau sebelum Projects -->
+    <section id="freelance-platforms" style="background: var(--bg-secondary); padding: 60px 0;">
+        <div class="container">
+            <h2 class="section-title fade-in">Available on Freelance Platforms</h2>
+            <p class="section-subtitle fade-in">Ready to work with you on your next project</p>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="row">
+                        <!-- Sribulancer Card -->
+                        <div class="col-md-6 mb-4">
+                            <a href="https://www.sribu.com/id/users/Abdillah123/jasa-pembuatan-website-professional-b0c22460-4908-49d7-b864-4dbdce60fa56" target="_blank" style="text-decoration: none;">
+                                <div class="platform-card fade-in">
+                                    <div class="platform-icon">
+                                        <i class="fas fa-briefcase"></i>
+                                    </div>
+                                    <h4 style="color: var(--text-primary); margin-top: 1rem;">Sribulancer</h4>
+                                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+                                        Hire Me At Sribulancer
+                                    </p>
+                                    <div class="platform-badge">
+                                        <span>View</span>
+                                        <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        
+                        <!-- Fastwork Card -->
+                        <div class="col-md-6 mb-4">
+                            <a href="https://fastwork.id/user/muhammadabdillah/web-development-88832879" target="_blank" style="text-decoration: none;">
+                                <div class="platform-card fade-in">
+                                    <div class="platform-icon">
+                                        <i class="fas fa-user-tie"></i>
+                                    </div>
+                                    <h4 style="color: var(--text-primary); margin-top: 1rem;">Fastwork</h4>
+                                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+                                        Hire Me At Fastwork
+                                    </p>
+                                    <div class="platform-badge">
+                                        <span>View</span>
+                                        <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
@@ -2404,12 +2538,42 @@ html {
                                 <p class="mb-0" style="color: var(--text-secondary);">Karawang, Indonesia</p>
                             </div>
                         </div>
+                        <!-- Tambahkan setelah contact info Location (sekitar baris 810) -->
+                        <div class="contact-info">
+                            <div class="contact-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-1">Sribulancer</h5>
+                                <a href="https://www.sribu.com/id/users/Abdillah123/jasa-pembuatan-website-professional-b0c22460-4908-49d7-b864-4dbdce60fa56" target="_blank" style="color: var(--text-secondary); text-decoration: none;">
+                                    View My Services
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="contact-info">
+                            <div class="contact-icon">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-1">Fastwork</h5>
+                                <a href="https://fastwork.id/user/muhammadabdillah/web-development-88832879" target="_blank" style="color: var(--text-secondary); text-decoration: none;">
+                                    View My Services
+                                </a>
+                            </div>
+                        </div>
                         <div class="mt-4">
                             <h5 class="mb-3">Follow Me</h5>
                             <div class="d-flex gap-2">
                                 <a href="https://github.com/Abdillah179" style="text-decoration: none;"><div class="social-link"><i class="fab fa-github"></i></div></a>
                                 <a href="https://www.linkedin.com/in/muhammad-abdillah-asyhar-a74829216?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" style="text-decoration: none;"><div class="social-link"><i class="fab fa-linkedin"></i></div></a>
                                 <a href="https://www.instagram.com/m_abdillah_234/" style="text-decoration: none;"><div class="social-link"><i class="fab fa-instagram"></i></div></a>
+                                <a href="https://www.sribu.com/id/users/Abdillah123/jasa-pembuatan-website-professional-b0c22460-4908-49d7-b864-4dbdce60fa56" style="text-decoration: none;" title="Sribulancer Profile">
+                                    <div class="social-link"><i class="fas fa-briefcase"></i></div>
+                                </a>
+                                <a href="https://fastwork.id/user/muhammadabdillah/web-development-88832879" style="text-decoration: none;" title="Fastwork Profile">
+                                    <div class="social-link"><i class="fas fa-user-tie"></i></div>
+                                </a>
                             </div>
                         </div>
                     </div>
